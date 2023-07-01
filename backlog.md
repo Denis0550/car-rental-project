@@ -1,6 +1,5 @@
 Requirements:
-- BE module
-- FE module
+
 - client db / car db
   - list clients
   - insurance for car
@@ -35,3 +34,7 @@ Requirements:
   - payment options available for clients
   - pay on collect would remove the need to have separate page though
 - one of those pop-up windows when users starts scrolling back up
+
+Done:
+- BE module
+- FE module
