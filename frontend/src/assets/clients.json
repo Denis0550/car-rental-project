@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "Denis",
+    "surname": "Soroka",
+    "phone": "111-111",
+    "email": "whaaat@gmail.com",
+    "address": "Estonia",
+    "hasDrivingLicense": false,
+    "registrationDateTime": "2023-07-02T11:39:11.72404",
+    "dateOfBirth": "1987-12-24"
+  }
+]
