@@ -15,7 +15,7 @@ export class ClientService {
 
   getAllClients(): Observable<Array<Client>> {
 
-    return this.http.get<Array<Client>>('/assets/clients.json')
+    return this.http.get<Array<Client>>(allClients);
 
   }
 
