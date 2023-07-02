@@ -9,5 +9,16 @@
     "hasDrivingLicense": false,
     "registrationDateTime": "2023-07-02T11:39:11.72404",
     "dateOfBirth": "1987-12-24"
+  },
+  {
+    "id": 2,
+    "name": "Denis2",
+    "surname": "Soroka2",
+    "phone": "111-1rr",
+    "email": "whaaat22@gmail.com",
+    "address": "Estonia",
+    "hasDrivingLicense": false,
+    "registrationDateTime": "2023-07-02T11:39:11.72404",
+    "dateOfBirth": "1987-12-24"
   }
 ]

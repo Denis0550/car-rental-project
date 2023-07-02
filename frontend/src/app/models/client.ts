@@ -1,8 +1,8 @@
 export interface Client {
 
   id: number;
-  name: string | null;
-  surname: string | null;
+  name: string;
+  surname: string;
   phone: string;
   email: string;
   address: string | null;
