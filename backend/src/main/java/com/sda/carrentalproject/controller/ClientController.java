@@ -44,7 +44,7 @@ public class ClientController {
 
     }
 
-    @PostMapping
+    @PostMapping("/clients")
     ResponseEntity<ClientDto> createNewClient(@RequestBody ClientDto clientToSave, UriComponentsBuilder ucb) {
         log.info("trying to save new client: [{}]", clientToSave);
         Client createdClient = clientService.saveClient(clientMapper.fromDtoToEntity(clientToSave));
