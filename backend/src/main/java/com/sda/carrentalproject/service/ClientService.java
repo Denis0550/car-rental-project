@@ -1,6 +1,7 @@
 package com.sda.carrentalproject.service;
 
 import com.sda.carrentalproject.domain.Client;
+import com.sda.carrentalproject.dto.ClientDto;
 import com.sda.carrentalproject.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,14 @@ public class ClientService {
         return result;
     }
 
+    public Client saveClient(Client clientEntity) {
+        log.info("creating new client: [{}]", clientEntity);
+
+        var result = clientRepository.save(clientEntity);
+        log.info("saved client: [{}]", result);
+
+        return result;
+    }
 
 
 
