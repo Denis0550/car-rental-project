@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {homePageUrl} from "../../models/links";
 
 @Component({
   selector: 'app-not-found-page',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class NotFoundPageComponent {
 
+  protected readonly homePageUrl = homePageUrl;
 }
