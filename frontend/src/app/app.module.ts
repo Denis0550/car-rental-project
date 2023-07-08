@@ -9,13 +9,16 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HttpClientModule} from "@angular/common/http";
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
-    TopBarComponent
+    TopBarComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
