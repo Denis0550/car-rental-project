@@ -32,10 +32,10 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.clientService.getAllClients().subscribe(
-      clients => {
+    this.clientService.getAllClients()
+      .subscribe(clients => {
         this.clients = clients;
-        this.dataSource = new MatTableDataSource(this.clients);
+        this.dataSource.data = this.clients;
         console.log(`results: ${JSON.stringify(clients, null, 2)}`);
       });
   }
