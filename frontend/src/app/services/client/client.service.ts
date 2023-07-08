@@ -14,6 +14,7 @@ export class ClientService {
 
 
   getAllClients(): Observable<Array<Client>> {
+    console.log("calling ???")
 
     return this.http.get<Array<Client>>(allClients);
 
