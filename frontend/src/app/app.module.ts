@@ -16,6 +16,7 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {clientsPageUrl, homePageUrl, notFoundPageUrl} from "./models/links";
 
 
 @NgModule({
@@ -38,9 +39,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatButtonToggleModule,
     RouterOutlet,
     RouterModule.forRoot([
-      {path: '', component: HomePageComponent},
-      {path: 'clients', component: ClientsComponent},
-      {path: '**', component: NotFoundPageComponent}
+      {path: homePageUrl, component: HomePageComponent},
+      {path: clientsPageUrl, component: ClientsComponent},
+      {path: notFoundPageUrl, component: NotFoundPageComponent}
     ]),
     MatIconModule,
     MatButtonModule
