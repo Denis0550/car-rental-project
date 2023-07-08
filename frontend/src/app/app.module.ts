@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { HomePageComponent } from './components/home-page/home-page.component';
+import {RouterModule, RouterOutlet} from "@angular/router";
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     AppComponent,
     ClientsComponent,
     TopBarComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,13 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    RouterOutlet,
+    RouterModule.forRoot([
+      {path: '', component: HomePageComponent},
+      {path: 'clients', component: ClientsComponent},
+
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
