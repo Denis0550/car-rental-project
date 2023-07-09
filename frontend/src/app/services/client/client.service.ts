@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {allClients} from "../../models/links";
+import {allClientsUrl, createClientUrl} from "../../models/links";
 import {Client} from "../../models/client";
 import {Observable} from "rxjs";
 
@@ -15,8 +15,19 @@ export class ClientService {
 
   getAllClients(): Observable<Array<Client>> {
 
-    return this.http.get<Array<Client>>(allClients);
+    return this.http.get<Array<Client>>(allClientsUrl);
 
   }
+
+  createClient(client: Client): Observable<Client> {
+    return this.http.post<Client>(createClientUrl, client);
+  }
+
+
+
+
+
+
+
 
 }

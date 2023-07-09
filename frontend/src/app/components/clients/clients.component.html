@@ -80,14 +80,14 @@
 
     <label for="name">Name:</label>
     <input [formControl]="name" type="text" id="name">
-    <div *ngIf="name.invalid">
+    <div class="alert" *ngIf="name.invalid && (name.touched || name.dirty)">
       <div *ngIf="name.errors?.['required']">Name field is required</div>
       <div *ngIf="name.errors?.['minlength']">Minimum length of field is 2</div>
     </div>
 
     <label for="surname">Surname:</label>
     <input [formControl]="surname" type="text" id="surname">
-    <div *ngIf="surname.invalid">
+    <div class="alert" *ngIf="surname.invalid && (surname.touched || surname.dirty)">
       <div *ngIf="surname.errors?.['required']">Surname field is required</div>
       <div *ngIf="surname.errors?.['minlength']">Minimum length of field is 2</div>
     </div>
@@ -95,7 +95,7 @@
     <!--TODO: fix validation on phone -->
     <label for="phone">Phone:</label>
     <input [formControl]="phone" type="text" id="phone">
-    <div *ngIf="phone.invalid">
+    <div class="alert" *ngIf="phone.invalid && (phone.touched || phone.dirty)">
       <div *ngIf="phone.errors?.['required']">Phone field is required</div>
       <div *ngIf="phone.errors?.['minlength']">Minimum length of field is 7</div>
     </div>
@@ -103,7 +103,7 @@
     <label for="email">Email:</label>
 <!--    <input formControlName="email" type="text" id="email">-->
     <input [formControl]="email" type="text" id="email">
-    <div *ngIf="email.invalid">
+    <div class="alert" *ngIf="email.invalid && (email.touched || email.dirty)">
       <div *ngIf="email.errors?.['required']">Email field is required</div>
       <div *ngIf="email.errors?.['email']">Wrong email format</div>
     </div>
@@ -115,14 +115,14 @@
 
     <label for="hasDrivingLicense">Has Driving license:</label>
     <input [formControl]="drivingLicense" type="text" id="hasDrivingLicense">
-    <div *ngIf="drivingLicense.invalid">
+    <div class="alert" *ngIf="drivingLicense.invalid && (drivingLicense.touched || drivingLicense.dirty)">
       <div *ngIf="drivingLicense.errors?.['required']">Driving license field is required</div>
     </div>
 
     <!--TODO: fix validation -->
     <label for="dateOfBirth">Date of birth:</label>
     <input [formControl]="dateOfBirth" type="text" id="dateOfBirth">
-    <div *ngIf="dateOfBirth.invalid">
+    <div class="alert" *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
       <div *ngIf="dateOfBirth.errors?.['required']">Date of birth field is required</div>
       <div *ngIf="dateOfBirth.errors?.['minlength']">Minimum length of field is 10</div>
     </div>
@@ -130,13 +130,15 @@
 
     <div>
     <button [disabled]="!clientForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
+    <button type="reset" mat-flat-button color="warn">Reset</button>
+      <!-- TODO: add progress indicator-->
     </div>
 
   </form>
-  <br>
-  <p>Form value: {{ clientForm.value | json }}</p>
-  <br>
-  <p> Form status {{ clientForm.status }}</p>
+<!--  <br>-->
+<!--  <p>Form value: {{ clientForm.value | json }}</p>-->
+<!--  <br>-->
+<!--  <p> Form status {{ clientForm.status }}</p>-->
 
 </div>
 
