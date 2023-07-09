@@ -76,7 +76,7 @@
 </div>
 
 <div>
-  <form [formGroup]="clientForm">
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
     <label for="name">Name:</label>
     <input formControlName="name" type="text" id="name">
 
@@ -99,7 +99,9 @@
     <label for="dateOfBirth">Date of birth:</label>
     <input formControlName="dateOfBirth" type="text" id="dateOfBirth">
 
-    <button type="submit" mat-flat-button color="warn">Submit</button>
+    <div>
+    <button [disabled]="!clientForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
+    </div>
 
   </form>
   <br>

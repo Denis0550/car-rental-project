@@ -25,14 +25,14 @@ export class ClientsComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   clientForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    surname: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    phone: new FormControl('', [Validators.required, Validators.minLength(7)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl(''),
     hasDrivingLicense: new FormControl(false, Validators.required),
     registrationDateTime: new FormControl(null),
-    dateOfBirth: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl('YYYY-MM-DD', [Validators.required, Validators.minLength(10)]),
   });
 
 
@@ -61,5 +61,12 @@ export class ClientsComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  onSubmit() {
+    console.log(`data to send: ${JSON.stringify(this.clientForm.value, null, 2)}`);
+  }
+
+
+
 }
 
