@@ -92,6 +92,7 @@
       <div *ngIf="surname.errors?.['minlength']">Minimum length of field is 2</div>
     </div>
 
+    <!--TODO: fix validation on phone -->
     <label for="phone">Phone:</label>
     <input [formControl]="phone" type="text" id="phone">
     <div *ngIf="phone.invalid">
@@ -118,6 +119,7 @@
       <div *ngIf="drivingLicense.errors?.['required']">Driving license field is required</div>
     </div>
 
+    <!--TODO: fix validation -->
     <label for="dateOfBirth">Date of birth:</label>
     <input [formControl]="dateOfBirth" type="text" id="dateOfBirth">
     <div *ngIf="dateOfBirth.invalid">
