@@ -2,10 +2,7 @@ package com.sda.carrentalproject.domain;
 
 import com.sda.carrentalproject.domain.enumeration.Color;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.YearMonth;
 
@@ -31,6 +28,10 @@ public class Car {
 
     @Enumerated(EnumType.STRING)
     private Color color;
+
+    private boolean available;
+
+    private PriceList priceList;
 
 
 }
