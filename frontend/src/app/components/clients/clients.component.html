@@ -77,28 +77,54 @@
 
 <div>
   <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
     <label for="name">Name:</label>
-    <input [formControl]="clientForm.controls.name" type="text" id="name">
+    <input [formControl]="name" type="text" id="name">
+    <div *ngIf="name.invalid">
+      <div *ngIf="name.errors?.['required']">Name field is required</div>
+      <div *ngIf="name.errors?.['minlength']">Minimum length of field is 2</div>
+    </div>
 
     <label for="surname">Surname:</label>
-    <input [formControl]="clientForm.controls.surname" type="text" id="surname">
+    <input [formControl]="surname" type="text" id="surname">
+    <div *ngIf="surname.invalid">
+      <div *ngIf="surname.errors?.['required']">Surname field is required</div>
+      <div *ngIf="surname.errors?.['minlength']">Minimum length of field is 2</div>
+    </div>
 
     <label for="phone">Phone:</label>
-    <input [formControl]="clientForm.controls.phone" type="text" id="phone">
+    <input [formControl]="phone" type="text" id="phone">
+    <div *ngIf="phone.invalid">
+      <div *ngIf="phone.errors?.['required']">Phone field is required</div>
+      <div *ngIf="phone.errors?.['minlength']">Minimum length of field is 7</div>
+    </div>
 
     <label for="email">Email:</label>
 <!--    <input formControlName="email" type="text" id="email">-->
-    <input [formControl]="clientForm.controls.email" type="text" id="email">
+    <input [formControl]="email" type="text" id="email">
+    <div *ngIf="email.invalid">
+      <div *ngIf="email.errors?.['required']">Email field is required</div>
+      <div *ngIf="email.errors?.['email']">Wrong email format</div>
+    </div>
+
 
     <label for="address">Address:</label>
-    <input [formControl]="clientForm.controls.address" type="text" id="address">
+    <input [formControl]="address" type="text" id="address">
+
 
     <label for="hasDrivingLicense">Has Driving license:</label>
-    <input [formControl]="clientForm.controls.hasDrivingLicense" type="text" id="hasDrivingLicense">
-
+    <input [formControl]="drivingLicense" type="text" id="hasDrivingLicense">
+    <div *ngIf="drivingLicense.invalid">
+      <div *ngIf="drivingLicense.errors?.['required']">Driving license field is required</div>
+    </div>
 
     <label for="dateOfBirth">Date of birth:</label>
-    <input [formControl]="clientForm.controls.dateOfBirth" type="text" id="dateOfBirth">
+    <input [formControl]="dateOfBirth" type="text" id="dateOfBirth">
+    <div *ngIf="dateOfBirth.invalid">
+      <div *ngIf="dateOfBirth.errors?.['required']">Date of birth field is required</div>
+      <div *ngIf="dateOfBirth.errors?.['minlength']">Minimum length of field is 10</div>
+    </div>
+
 
     <div>
     <button [disabled]="!clientForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
