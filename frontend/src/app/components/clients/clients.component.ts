@@ -4,7 +4,7 @@ import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {ClientService} from "../../services/client/client.service";
 import {Client} from "../../models/client";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 
@@ -25,14 +25,14 @@ export class ClientsComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   clientForm = new FormGroup({
-    name: new FormControl(''),
-    surname: new FormControl(''),
-    phone: new FormControl(''),
-    email: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
     address: new FormControl(''),
-    hasDrivingLicense: new FormControl(false),
-    registrationDateTime: new FormControl(''),
-    dateOfBirth: new FormControl(''),
+    hasDrivingLicense: new FormControl(false, Validators.required),
+    registrationDateTime: new FormControl(null),
+    dateOfBirth: new FormControl('', Validators.required),
   });
 
 

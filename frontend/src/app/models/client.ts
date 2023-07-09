@@ -7,7 +7,7 @@ export interface Client {
   email: string;
   address: string | null;
   hasDrivingLicense: boolean;
-  registrationDateTime: string;
+  registrationDateTime: string | null;
   dateOfBirth: string
 
 
