@@ -78,26 +78,27 @@
 <div>
   <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
     <label for="name">Name:</label>
-    <input formControlName="name" type="text" id="name">
+    <input [formControl]="clientForm.controls.name" type="text" id="name">
 
     <label for="surname">Surname:</label>
-    <input formControlName="surname" type="text" id="surname">
+    <input [formControl]="clientForm.controls.surname" type="text" id="surname">
 
     <label for="phone">Phone:</label>
-    <input formControlName="phone" type="text" id="phone">
+    <input [formControl]="clientForm.controls.phone" type="text" id="phone">
 
     <label for="email">Email:</label>
-    <input formControlName="email" type="text" id="email">
+<!--    <input formControlName="email" type="text" id="email">-->
+    <input [formControl]="clientForm.controls.email" type="text" id="email">
 
     <label for="address">Address:</label>
-    <input formControlName="address" type="text" id="address">
+    <input [formControl]="clientForm.controls.address" type="text" id="address">
 
     <label for="hasDrivingLicense">Has Driving license:</label>
-    <input formControlName="hasDrivingLicense" type="text" id="hasDrivingLicense">
+    <input [formControl]="clientForm.controls.hasDrivingLicense" type="text" id="hasDrivingLicense">
 
 
     <label for="dateOfBirth">Date of birth:</label>
-    <input formControlName="dateOfBirth" type="text" id="dateOfBirth">
+    <input [formControl]="clientForm.controls.dateOfBirth" type="text" id="dateOfBirth">
 
     <div>
     <button [disabled]="!clientForm.valid" type="submit" mat-flat-button color="warn">Submit</button>
