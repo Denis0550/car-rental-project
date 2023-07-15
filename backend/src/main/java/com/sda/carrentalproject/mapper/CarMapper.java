@@ -17,7 +17,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
         .productionYear(entity.getProductionYear())
         .color(entity.getColor())
         .available(entity.isAvailable())
-//        .priceList(entity.getPriceList())
+        .priceList(entity.getPriceList())
         .build();
   }
 
@@ -30,7 +30,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
         .productionYear(dto.productionYear())
         .color(dto.color())
         .available(dto.available())
-//        .priceList(dto.priceList())
+        .priceList(dto.priceList())
         .build();
   }
 }
