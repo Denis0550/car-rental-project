@@ -26,8 +26,10 @@ public class BookingRecord {
     @OneToOne
     private Client client;
 
+    @Column(nullable = false)
     private LocalDate startDate;
 
+    @Column(nullable = false)
     private LocalDate endDate;
 
     private long fullPriceInEuroCents;
