@@ -2,6 +2,7 @@ package com.sda.carrentalproject.service;
 
 import com.sda.carrentalproject.domain.Client;
 import com.sda.carrentalproject.dto.ClientDto;
+import com.sda.carrentalproject.exception.WrongClientIdException;
 import com.sda.carrentalproject.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,18 @@ public class ClientService {
         log.info("saved client: [{}]", result);
 
         return result;
+    }
+
+    public Client findClientWithId(long id) {
+        log.info("trying to find client with id: [{}]", id);
+
+       return clientRepository.findById(id)
+           .map(client -> {
+               log.info("Found client: [{}]", client);
+               return client;
+           })
+           .orElseThrow(() -> new WrongClientIdException("No client with id: [%s]".formatted(id)));
+
     }
 
 
