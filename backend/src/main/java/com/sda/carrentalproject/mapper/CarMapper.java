@@ -1,6 +1,7 @@
 package com.sda.carrentalproject.mapper;
 
 import com.sda.carrentalproject.domain.Car;
+import com.sda.carrentalproject.domain.PriceList;
 import com.sda.carrentalproject.dto.CarDto;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
         .productionYear(entity.getProductionYear())
         .color(entity.getColor())
         .available(entity.isAvailable())
-        .priceList(entity.getPriceList())
+        .pricePerDayInEuroCents(entity.getPriceList().getPricePerDayInEuroCents())
         .build();
   }
 
@@ -30,7 +31,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
         .productionYear(dto.productionYear())
         .color(dto.color())
         .available(dto.available())
-        .priceList(dto.priceList())
+        .priceList(new PriceList(dto.pricePerDayInEuroCents()))
         .build();
   }
 }
