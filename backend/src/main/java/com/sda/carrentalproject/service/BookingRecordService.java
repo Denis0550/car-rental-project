@@ -48,15 +48,28 @@ public class BookingRecordService {
     Client currentClient = clientService.findClientWithId(bookingRequestDto.clientId());
 
     // find a car based on given id
-    Car carToBook = carService.findCarWithId(bookingRequestDto.clientId());
+    Car carToBook = carService.findAvailableCarWithId(bookingRequestDto.clientId());
 
     // calculate full price
     long bookingPriceInEuroCents = calculateBookingPrice(bookingRequestDto, carToBook);
 
     // save record
+    BookingRecord newRecordToSave = BookingRecord.builder()
+        .bookedCar(carToBook)
+        .client(currentClient)
+        .startDate(bookingRequestDto.startDate())
+        .endDate(bookingRequestDto.endDate())
+        .fullPriceInEuroCents(bookingPriceInEuroCents)
+        .build();
 
-    throw new RuntimeException("Not implemented");
-//    return null;
+    carToBook.setAvailable(false);
+    carService.saveCar(carToBook);
+
+  BookingRecord saved = bookingRecordRepository.save(newRecordToSave);
+  log.info("Created booking record: [{}}", saved);
+
+  return saved;
+
   }
 
   public long calculateBookingPrice(CarBookingRequestDto bookingRequestDto, Car carToBook) {
