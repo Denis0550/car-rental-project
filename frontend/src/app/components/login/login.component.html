@@ -1,6 +1,6 @@
 <div>
   <h2>Login</h2>
-  <p>{{getStatusMessage()}}</p>
-  <button *ngIf="!loginService.isLoggedIn" type="button" mat-flat-button color="warn">Login</button>
-  <button *ngIf="loginService.isLoggedIn" type="button" mat-flat-button color="warn">Logout</button>
+  <p>{{message}}</p>
+  <button (click)="login()" *ngIf="isLoggedOut" type="button" mat-flat-button color="warn">Login</button>
+  <button (click)="logout()" *ngIf="isLoggedIn" type="button" mat-flat-button color="warn">Logout</button>
 </div>
