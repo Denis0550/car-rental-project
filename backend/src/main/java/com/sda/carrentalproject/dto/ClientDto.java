@@ -4,13 +4,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import lombok.Builder;
 
-
-// TODO: add nulls and not nulls annotations
 @Builder
 public record ClientDto(Long id,
                         @NotNull
@@ -26,6 +23,7 @@ public record ClientDto(Long id,
                         String phone,
 
                         @Email
+                        @NotNull
                         String email,
 
                         String address,
