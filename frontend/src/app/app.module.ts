@@ -26,6 +26,7 @@ import {
 import {ReactiveFormsModule} from "@angular/forms";
 import { CarsComponent } from './components/cars/cars.component';
 import { LoginComponent } from './components/login/login.component';
+import {authGuard} from "./services/login-service/login.service";
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { LoginComponent } from './components/login/login.component';
     RouterOutlet,
     RouterModule.forRoot([
       {path: homePageUrl, component: HomePageComponent},
-      {path: clientsPageUrl, component: ClientsComponent},
+      {path: clientsPageUrl, component: ClientsComponent, canActivate:[authGuard]},
       {path: carsPageUrl, component: CarsComponent},
       {path: loginPageUrl, component: LoginComponent},
       {path: notFoundPageUrl, component: NotFoundPageComponent}
