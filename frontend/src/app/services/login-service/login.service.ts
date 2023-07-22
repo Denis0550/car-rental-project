@@ -20,22 +20,25 @@ export class LoginService {
   surname = defaultUserSurname;
   userLogin = defaultUserLogin;
 
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {
+  }
 
   login(userLogin: string, pass: string): Observable<boolean> {
-   return  of(true)
+    // TODO: delete after tests
+    console.log(`userLogin: ${userLogin}, password: ${pass}`)
+    return of(true)
     .pipe(
       delay(2000),
       tap(value => {
         this.isLoggedIn = true;
         this.userRole = adminRole;
         this.userLogin = userLogin;
-        this.name = 'Denis';
-        this.surname = 'P';
+        this.name = 'Maniek';
+        this.surname = 'P.';
       })
     )
-
   }
 
   logout() {
@@ -46,4 +49,3 @@ export class LoginService {
     this.userLogin = defaultUserLogin;
   }
 }
-

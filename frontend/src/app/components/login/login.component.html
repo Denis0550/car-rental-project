@@ -1,6 +1,14 @@
 <div>
   <h2>Login</h2>
   <p>{{message}}</p>
-  <button (click)="login()" *ngIf="isLoggedOut" type="button" mat-flat-button color="warn">Login</button>
+  <form [formGroup]="loginForm" *ngIf="isLoggedOut" (ngSubmit)="login()">
+    <label for="login">Login:</label>
+    <input [formControl]="loginControl" type="text" id="login">
+
+    <label for="password">Password:</label>
+    <input [formControl]="passwordControl" type="password" id="password">
+    <button type="submit" mat-flat-button color="warn">Login</button>
+  </form>
+
   <button (click)="logout()" *ngIf="isLoggedIn" type="button" mat-flat-button color="warn">Logout</button>
 </div>

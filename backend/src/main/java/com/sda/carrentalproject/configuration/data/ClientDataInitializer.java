@@ -53,9 +53,9 @@ public class ClientDataInitializer implements CommandLineRunner {
 //           .productionYear(YearMonth.of(2022, Month.APRIL))
 //           .color(Color.BLACK)
 //           .available(true)
-//           .priceList()
+////           .priceList()
 //           .build();
-//
+
 //       carRepository.save(car);
 
     }
