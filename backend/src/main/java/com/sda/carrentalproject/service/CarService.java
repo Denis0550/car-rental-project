@@ -28,7 +28,7 @@ public class CarService {
     this.carRepository = carRepository;
   }
 
-  public List<Car> getAllCars() {
+  public List<Car> findAllCars() {
     log.info("getting all cars from repository");
 
     var result = carRepository.findAll();
@@ -73,9 +73,16 @@ public class CarService {
         .orElseThrow(() -> new WrongCarIdException("Car with given id: [%s] is unavailable!".formatted(id)));
   }
 
+  public List<Car> findRentCars() {
+    log.info("trying to find rent cars");
+    var rentCars = carRepository.findAllByAndAvailable(false);
+    log.info("number of rent cars: [{}]", rentCars.size());
+    log.debug("rent cars: {}", rentCars);
+  }
+
   public List<Car> findAllCarsAvailableForBooking() {
     log.info("trying to find all cars available");
-    var availableCars = carRepository.findAllByAndAvailableTrue();
+    var availableCars = carRepository.findAllByAndAvailable(true);
     log.info("number of available cars: [{}]", availableCars.size());
     log.debug("available cars: {}", availableCars);
     return availableCars;
@@ -85,12 +92,19 @@ public class CarService {
   public List<Car> findCarsBasedOnQueryParameters(Map<String, String> queryParams) {
     log.info("finding cars based on query parameters: {}", queryParams);
 
-    String availableValue = queryParams.getOrDefault(availableKey, "false");
-    boolean available = Boolean.parseBoolean(availableValue);
-    if (available) {
-      return findAllCarsAvailableForBooking();
+    List<Car> result;
+    if (!queryParams.containsKey(availableKey)) {
+      result = findAllCars();
     } else {
-      return getAllCars();
+      boolean available = Boolean.parseBoolean(queryParams.get(availableKey));
+      if (available) {
+        result = findAllCarsAvailableForBooking();
+      } else {
+        result = findRentCars();
+      }
     }
+    return result;
   }
+
+
 }
