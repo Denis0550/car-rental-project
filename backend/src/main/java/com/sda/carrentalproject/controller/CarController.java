@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -33,16 +34,22 @@ public class CarController {
     this.carMapper = carMapper;
   }
 
+  //   /cars?available=true?color=blue
   @GetMapping("/cars")
-  List<CarDto> allCars() {
-    log.info("all cars endpoint");
-
-    var cars = carService.getAllCars();
-
-    return cars.stream()
-        .map(car -> carMapper.fromEntityToDto(car))
-        .toList();
+  List<CarDto> getCars(@RequestParam Map<String, String> queryParams) {
+    log.info("getting cars");
+    log.info("query params: [{}]", queryParams);
+    return carService.findCarsBasedOnQueryParameters(queryParams)
+          .stream()
+          .map(car -> carMapper.fromEntityToDto(car))
+          .toList();
   }
+
+
+
+
+
+
 
   @PostMapping("/cars")
   ResponseEntity<CarDto> createNewCar(@RequestBody CarDto carToSave, UriComponentsBuilder ucb ) {

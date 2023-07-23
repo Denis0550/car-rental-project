@@ -5,12 +5,22 @@ import com.sda.carrentalproject.domain.Car;
 import com.sda.carrentalproject.exception.WrongCarIdException;
 import com.sda.carrentalproject.repository.CarRepository;
 import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class CarService {
+
+  private static final String availableKey = "available";
+  private static final String colorKey = "color";
+  private static final String brandKey = "brand";
+  private static final String modelKey = "model";
+
+
+
+
 
   private final CarRepository carRepository;
 
@@ -65,11 +75,22 @@ public class CarService {
 
   public List<Car> findAllCarsAvailableForBooking() {
     log.info("trying to find all cars available");
-    var availableCars = carRepository.findAllAndAvailableTrue();
+    var availableCars = carRepository.findAllByAndAvailableTrue();
     log.info("number of available cars: [{}]", availableCars.size());
     log.debug("available cars: {}", availableCars);
     return availableCars;
   }
 
 
+  public List<Car> findCarsBasedOnQueryParameters(Map<String, String> queryParams) {
+    log.info("finding cars based on query parameters: {}", queryParams);
+
+    String availableValue = queryParams.getOrDefault(availableKey, "false");
+    boolean available = Boolean.parseBoolean(availableValue);
+    if (available) {
+      return findAllCarsAvailableForBooking();
+    } else {
+      return getAllCars();
+    }
+  }
 }
