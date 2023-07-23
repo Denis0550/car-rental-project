@@ -42,7 +42,7 @@ public class CarController {
     log.info("getting cars");
     log.info("query params: [{}]", queryParams);
     log.info("paging params: [{}]", pageable);
-    return carService.findCarsBasedOnQueryParameters(queryParams)
+    return carService.findCarsBasedOnQueryParameters(queryParams, pageable)
           .stream()
           .map(car -> carMapper.fromEntityToDto(car))
           .toList();
