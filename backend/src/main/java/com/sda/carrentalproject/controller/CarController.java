@@ -9,6 +9,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,22 +38,14 @@ public class CarController {
 
   //   /cars?available=true?color=blue
   @GetMapping("/cars")
-  List<CarDto> getCars(@RequestParam Map<String, String> queryParams,
+  public Page<CarDto> getCars(@RequestParam Map<String, String> queryParams,
       Pageable pageable) {
     log.info("getting cars");
-    log.info("query params: [{}]", queryParams);
-    log.info("paging params: [{}]", pageable);
+    log.info("query params: {}", queryParams);
+    log.info("paging parameters: [{}]", pageable);
     return carService.findCarsBasedOnQueryParameters(queryParams, pageable)
-          .stream()
-          .map(car -> carMapper.fromEntityToDto(car))
-          .toList();
+        .map(car -> carMapper.fromEntityToDto(car));
   }
-
-
-
-
-
-
 
   @PostMapping("/cars")
   ResponseEntity<CarDto> createNewCar(@RequestBody CarDto carToSave, UriComponentsBuilder ucb ) {
