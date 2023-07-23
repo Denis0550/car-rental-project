@@ -1,4 +1,8 @@
 div {
   padding: 10px;
   margin: 10px;
+  background-image: url("/assets/top-ber-image.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20%;
 }
